@@ -147,3 +147,42 @@ brief, checks and voice live in `replica/brand.md`; the sweep config in `replica
 
 `sweep.py . --config replica/brand.json` → **Clean**, exit 0. `npm run build` green,
 `npm test` 12/12, `npm run e2e` 18/18 after updating the one queue assertion to the new copy.
+
+## Step 11 — launch (replica-launch)
+
+**The shuffle claim was made true before the page was written.** `play` replaced the queue
+and ignored `shuffle`, so turning shuffle on and picking an album played album order; the
+repeat-all wrap restarted the same order. Both are fixed in `src/state/player.tsx`: a play
+under shuffle queues every track once with the chosen track first, and a repeat-all wrap
+builds a fresh pass that does not start with the track that just ended. Two reducer tests
+cover the permutation and the wrap. Landing copy would have been a lie without this, and a
+marketing page is the wrong place to discover a product bug.
+
+Landing page at `src/pages/Landing.tsx`, route `/` when no server is configured. Sections:
+hero ("Your music. Every track once."), the two top complaints in plain words, three setup
+steps, six shipped features, free pricing, six FAQs, final CTA. The screenshot is the real
+app at 1440×900 against the e2e mock server (`public/landing.png`), not a mockup. Only
+shipped behaviour is claimed: no offline, no install, no reconnect, no reorder, no sorting.
+
+Routing bug found while testing the CTA: with no config, `/settings` redirected to itself
+and rendered nothing. `App.tsx` now renders the landing page at `/`, redirects other paths
+to `/settings`, and lets `/settings` fall through to the connect screen. `F07` covers the
+page, axe and the CTA path.
+
+Launch docs in `replica/launch/`:
+
+- `landing.md` — section-by-section copy and the evidence behind each claim.
+- `pricing.md` — original's US prices checked 2026-11-03 (Individual $12.99, Student $6.99,
+  Duo $18.99, Family $21.99), Apple Music $11.99/$19.99, Navidrome free. The YouTube page is
+  JavaScript-only and the support page returned empty, so that price is recorded as
+  unverified. The 67 price complaints across 3 sources are cited, not quoted. Wholecrate has
+  no price page, no trial, no tier, no Stripe and no billing code.
+- `listing.json` — Google Play only (a web wrapper would fail App Store Guideline 4.2).
+  `listing.py` → 0 errors, 0 warnings; title 28/30, short 56/80, full 1231/4000.
+- `launch-plan.md` — 10 named beta sources from the research, no fake proof; analytics
+  decision is **none** at launch (no tracker next to a server password); community order;
+  Show HN and Product Hunt drafts leading with the shuffle fix; first-10-users plan.
+
+Gates: `sweep.py` Clean (exit 0), `contrast.py` 13 pairs / 0 failing AA, `npm run build`
+green (315.25 kB JS / 21.55 kB CSS), `npm test` 14/14, `npm run e2e` 19/19. Committed as
+"Launch Wholecrate with a landing page and a fair shuffle".

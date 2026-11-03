@@ -33,6 +33,25 @@ describe('player reducer', () => {
     expect(shuffled.queue.map((t) => t.id).sort()).toEqual(['a', 'b', 'c'])
   })
 
+  it('play with shuffle on keeps every track once and starts with the chosen one', () => {
+    const next = reducer({ ...seeded, shuffle: true, queue: [] }, {
+      type: 'play',
+      tracks: [track('a'), track('b'), track('c')],
+      start: 1,
+    })
+    expect(next.queue[0].id).toBe('b')
+    expect(next.index).toBe(0)
+    expect(next.queue.map((t) => t.id).sort()).toEqual(['a', 'b', 'c'])
+  })
+
+  it('repeat-all under shuffle starts a new pass without replaying the last track', () => {
+    const last = { ...seeded, shuffle: true, repeat: 'all' as const, index: 2 }
+    const next = reducer(last, { type: 'next' })
+    expect(next.index).toBe(0)
+    expect(next.queue.map((t) => t.id).sort()).toEqual(['a', 'b', 'c'])
+    expect(next.queue[0].id).not.toBe('c')
+  })
+
   it('enqueue appends, or starts playback when the queue is empty', () => {
     expect(reducer(seeded, { type: 'enqueue', tracks: [track('d')] }).queue.map((t) => t.id)).toEqual([
       'a',

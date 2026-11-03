@@ -66,15 +66,28 @@ function shuffleList<T>(list: T[]) {
   return out
 }
 
+// A new uniform pass: every track once, and the track that just ended is not first again.
+function reshuffleFrom<T extends { id: string }>(queue: T[], index: number) {
+  const out = shuffleList(queue)
+  if (out.length > 1 && out[0].id === queue[index]?.id) out.push(out.shift() as T)
+  return out
+}
+
 export function reducer(state: PlayerState, action: Action): PlayerState {
   switch (action.type) {
     case 'play': {
       if (!action.tracks.length) return state
-      const same = state.queue[state.index]?.id === action.tracks[action.start]?.id
+      const picked = action.tracks[action.start]
+      if (!picked) return state
+      const queue =
+        state.shuffle && action.tracks.length > 1
+          ? [picked, ...shuffleList(action.tracks.filter((_, i) => i !== action.start))]
+          : action.tracks
+      const same = state.queue[state.index]?.id === picked?.id
       return {
         ...state,
-        queue: action.tracks,
-        index: action.start,
+        queue,
+        index: state.shuffle ? 0 : action.start,
         positionMs: 0,
         playing: true,
         seq: same ? state.seq + 1 : state.seq,
@@ -88,7 +101,8 @@ export function reducer(state: PlayerState, action: Action): PlayerState {
         return { ...state, index: state.index + 1, positionMs: 0, playing: true }
       }
       if (state.repeat === 'all') {
-        return { ...state, index: 0, positionMs: 0, playing: true }
+        const queue = state.shuffle ? reshuffleFrom(state.queue, state.index) : state.queue
+        return { ...state, queue, index: 0, positionMs: 0, playing: true }
       }
       return { ...state, playing: false, positionMs: 0 }
     }

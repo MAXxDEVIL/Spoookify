@@ -11,6 +11,7 @@ import PlayerBar from './components/PlayerBar'
 import Album from './pages/Album'
 import Artist from './pages/Artist'
 import Home from './pages/Home'
+import Landing from './pages/Landing'
 import Library from './pages/Library'
 import Liked from './pages/Liked'
 import Playlist from './pages/Playlist'
@@ -38,7 +39,10 @@ function Shell() {
   const { config } = useServer()
   const { pathname } = useLocation()
 
-  if (!config && pathname !== '/settings') return <Navigate to="/settings" replace />
+  if (!config) {
+    if (pathname === '/') return <Landing />
+    if (pathname !== '/settings') return <Navigate to="/settings" replace />
+  }
 
   return (
     <div className="grid h-dvh grid-rows-[minmax(0,1fr)_auto]">

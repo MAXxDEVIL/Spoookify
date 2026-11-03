@@ -1,0 +1,8 @@
+{
+  "avoid": ["Spotify", "Spoookify", "Spotify AB"],
+  "google_play": {
+    "title": "Wholecrate: Your Music, Once",
+    "short_description": "Play the music on your own Navidrome or Subsonic server.",
+    "full_description": "Wholecrate is a web client for the music you already own.\n\nPoint it at a Navidrome or Subsonic server, log in, and your library is there: albums, artists, playlists, liked tracks. Audio streams straight from your server. Nothing is copied, re-hosted or uploaded anywhere else, and Wholecrate has no account of its own.\n\nBuilt for a whole crate, not a highlight reel:\n- One uniform shuffle. Every track in the queue plays once, then a fresh pass starts, without replaying the track that just ended.\n- A queue you can see and edit. Add, remove, jump, clear.\n- Playlists and likes saved to your server, so they survive a new browser or a new laptop.\n- Search across whatever your server has scanned.\n- No ads, no algorithm, no account to create.\n\nWhat you need:\n- A music library on a machine you control.\n- Navidrome, or another server that speaks the Subsonic API.\n- The server's address and a login for it.\n\nWhat it does not do:\n- It does not host or sell music. There is no catalogue and no importer from streaming services.\n- It does not play offline. The audio lives on your server, so playback needs a connection to it.\n\nWholecrate is open source and has no paid tier. You pay only for your own server and storage, if anything."
+  }
+}

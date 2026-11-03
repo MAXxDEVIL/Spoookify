@@ -183,14 +183,14 @@ Three options, each grounded in a top theme. The original's name must not appear
 the app name, store listing or ads; a comparison page is a legal question for a
 lawyer in your country.
 
-1. **For people who own their music and are tired of hearing the same songs, Spoookify
+1. **For people who own their music and are tired of hearing the same songs, Wholecrate
    plays the files you already have with one uniform shuffle, no algorithm and no
    ads.** Evidence: repetitive recommendations 124 reviews across 3 sources; shuffle
    78 across 3.
-2. **For listeners who want music and nothing else, Spoookify plays your library with
+2. **For listeners who want music and nothing else, Wholecrate plays your library with
    no ads, no podcasts and no AI artists.** Evidence: ads 76 across 3 sources;
    podcasts/non-music 28 across 2; "Will play AI artists without telling you".
-3. **For desktop listeners stuck with a heavy app, Spoookify is a fast browser client
+3. **For desktop listeners stuck with a heavy app, Wholecrate is a fast browser client
    for your own server — no install, no Electron.** Evidence: desktop/web 43 rows
    (thin, one source); slow/heavy 27 across 3.
 

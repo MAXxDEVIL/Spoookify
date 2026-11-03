@@ -22,7 +22,7 @@ export default function TrackRow({ track, index, active = false, playing = false
         onClick={onPlay}
         aria-label={`${active && playing ? 'Pause' : 'Play'} ${track.title}${
           track.artist ? ` by ${track.artist}` : ''
-        }`}
+        }, track ${index + 1}`}
         className="group/play grid h-8 w-8 place-items-center rounded-pill text-text-muted hover:bg-surface-2"
       >
         {active && playing ? (

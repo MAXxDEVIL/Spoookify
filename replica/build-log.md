@@ -50,3 +50,20 @@ queued track cannot leave ghost audio. Six new reducer tests cover the queue.
 Cut by ultra: full-screen player (S12), Connect as its own screen (S11), queue
 drag-reorder, playlist track removal, right-click context menu, per-type search
 tabs, sort controls, greeting.
+
+## Step 7 — tests (replica-test)
+
+No Navidrome or Docker in this environment, so Playwright drives the real app over
+the Subsonic HTTP contract against a fixture server (`e2e/mock-server.mjs`). Six flow
+specs, 17 cases: happy path, edges, one negative per flow where it exists. Axe runs on
+the main list screens; console errors, page errors and 5xx responses fail the test.
+
+One real bug: the track-row play button's accessible name omitted the visible track
+number, tripping `label-content-name-mismatch` on every track list. Fixed by appending
+`, track <n>` to the label (`bug BUG-001`).
+
+The rest of the first-run failures were test-side: strict-mode collisions between the
+footer transport and page actions, bare text matching both title and album cells, and a
+resume test that seeded storage before the app's `pagehide` save overwrote it.
+
+Fixture WAVs are 2 s while tracks declare 120-300 s, so seek assertions are clamped.

@@ -49,7 +49,7 @@ export type Action =
   | { type: 'clear' }
   | { type: 'jump'; index: number }
 
-const PLAYER_KEY = 'spoookify.player'
+const PLAYER_KEY = 'wholecrate.player'
 
 function clampPosition(ms: number, track?: Track) {
   const floor = Math.max(0, ms)

@@ -113,3 +113,37 @@ Limits written into `fixes.md`: HN rows are comments not app reviews and some on
 Spotify in passing; App Store RSS has no per-review permalink, so those rows link to the
 app's review page; 379 of 527 rows are unrated. All 23 quotes in `fixes.md` were checked
 as verbatim substrings of `reviews.csv` after line-wrap normalisation.
+
+## Step 10 — brand (replica-brand)
+
+Renamed the app to **Wholecrate**. `Spoookify` shared three syllables and a green-on-black
+frame with Spotify; that was never shippable. Twenty candidates across five styles were cut
+to five (Wholecrate, Ownspin, Platter, Waxwing, Rill) using the confusion test from the
+skill. Wholecrate won on the angle (the whole crate, every track once) and on the checks:
+only finalist with a free GitHub handle (user 404, 0 repos), free `.app` and `.fm` by RDAP
+on 2026-11-03, and no software namesake in the App Store. `wholecrate.com` is registered
+since 2015 and is not needed. Runners-up all had a music app already using the name
+(Deadwax, Sleeve, Spindle, Runout) or a crowded software name (Platter, Rill).
+
+The trademark rows are **unrun**, not clear: TMview rejected the request, tmsearch is a
+JavaScript app, and the local search backends returned 402 or unrelated results. Play Store,
+X, Instagram and TikTok are also unrun. All of that is written as "to run" in `brand.md`
+rather than dressed up as availability. A lawyer should search class 9 and 42 before money
+goes into the name.
+
+Palette moved from mint `#6ee7c7` to warm amber `#f2b544` on warm charcoal, a different hue
+family from Spotify's green. `contrast.py`: 13 pairs, 0 failing AA, lowest UI pair 3.31:1.
+Added the original's colours to `brand.json` so the sweep catches survivors; the old mint is
+in that list too.
+
+Rewrote the ten most-seen strings in the new voice (warm not soft, direct not blunt, knowing
+not smug). "Made for you" became "From the crate" — it was both Spotify's wording and a
+promise this app does not make. Renamed the storage keys to `wholecrate.server` and
+`wholecrate.player`; `e2e` fixtures changed in the same commit, and existing dev state is
+discarded, which is fine pre-launch.
+
+New favicon: a crate front, three amber slats in a frame, deliberately not a circle. Logo
+brief, checks and voice live in `replica/brand.md`; the sweep config in `replica/brand.json`.
+
+`sweep.py . --config replica/brand.json` → **Clean**, exit 0. `npm run build` green,
+`npm test` 12/12, `npm run e2e` 18/18 after updating the one queue assertion to the new copy.

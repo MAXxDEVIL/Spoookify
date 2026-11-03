@@ -32,9 +32,9 @@ export default function Settings() {
 
   return (
     <form onSubmit={connect} className="mx-auto max-w-md">
-      <h1 className="text-xl">Connect a server</h1>
+      <h1 className="text-xl">Point Wholecrate at your music</h1>
       <p className="mt-2 text-sm text-text-muted">
-        Spoookify plays from your own Navidrome or Subsonic library. Nothing leaves your server.
+        It plays from your own Navidrome or Subsonic library. Nothing leaves your server.
       </p>
 
       <div className="mt-6 flex flex-col gap-4">
@@ -80,7 +80,7 @@ export default function Settings() {
         disabled={testing}
         className="mt-6 w-full rounded-pill bg-accent px-4 py-2 text-sm font-semibold text-on-accent disabled:opacity-50"
       >
-        {testing ? 'Testing…' : 'Connect'}
+        {testing ? 'Testing…' : 'Connect to my library'}
       </button>
 
       {error && (

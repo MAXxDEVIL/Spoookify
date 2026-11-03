@@ -40,7 +40,7 @@ export default function Home() {
   const groups = [
     ['Recently played', sections.recent],
     ['New releases', sections.newest],
-    ['Made for you', sections.random],
+    ['From the crate', sections.random],
   ] as const
 
   return (
@@ -48,7 +48,7 @@ export default function Home() {
       <h1 className="text-xl">Home</h1>
       {groups.every(([, albums]) => albums.length === 0) && (
         <p className="mt-6 text-sm text-text-muted">
-          Your library is empty. Add music to your server, or head to Library after the first scan.
+          The crate is empty. Add music to your server; it appears after the first scan.
         </p>
       )}
       {groups.map(

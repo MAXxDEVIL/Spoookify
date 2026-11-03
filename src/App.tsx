@@ -44,7 +44,7 @@ function Shell() {
     <div className="grid h-dvh grid-rows-[minmax(0,1fr)_auto]">
       <div className="grid min-h-0 grid-cols-[56px_minmax(0,1fr)] sm:grid-cols-[224px_minmax(0,1fr)]">
         <nav aria-label="Main" className="flex flex-col gap-1 border-r border-border bg-surface p-2 sm:p-3">
-          <p className="hidden px-2 py-3 text-sm font-semibold sm:block">Spoookify</p>
+          <p className="hidden px-2 py-3 text-sm font-semibold sm:block">Wholecrate</p>
           <NavItem to="/" end icon={<HomeIcon size={20} />} label="Home" />
           <NavItem to="/search" icon={<SearchIcon size={20} />} label="Search" />
           <NavItem to="/library" icon={<LibraryIcon size={20} />} label="Library" />

@@ -6,7 +6,7 @@ export const MOCK = 'http://localhost:5300'
 export async function connect(page: Page, options: { empty?: boolean } = {}) {
   await page.addInitScript(() => {
     localStorage.setItem(
-      'spoookify.server',
+      'wholecrate.server',
       JSON.stringify({ url: 'http://localhost:5300', user: 'tester', password: 'p' }),
     )
   })

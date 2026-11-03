@@ -54,7 +54,7 @@ test.describe('F02 queue and change track', () => {
     const dialog = page.getByRole('dialog', { name: 'Queue' })
     await dialog.getByRole('button', { name: 'Remove Night Bus from queue' }).click()
 
-    await expect(dialog).toContainText('Nothing queued')
+    await expect(dialog).toContainText('The queue is empty')
     await expect(page.locator('footer')).toContainText('Nothing playing')
     await expect
       .poll(() => page.evaluate(() => document.querySelector('audio')?.paused ?? true))

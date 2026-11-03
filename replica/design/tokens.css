@@ -1,21 +1,21 @@
-/* Spoookify tokens — the only file allowed to hold a raw colour value.
+/* Wholecrate tokens — the only file allowed to hold a raw colour value.
    Generated from replica/design/tokens.json. Tailwind v4 reads @theme, so no
    tailwind.config.js exists. Components use bg-surface / text-muted, never hex.
    Imported by src/styles.css, which owns the single @import "tailwindcss". */
 
 @theme {
   /* colours — roles, not shades */
-  --color-bg: #0a0b0f;
-  --color-surface: #12141a;
-  --color-surface-2: #1a1d25;
-  --color-border: #3b4252;        /* decorative divider, not a contrast boundary */
-  --color-border-input: #5a6172;  /* 3.17:1 on bg — meets the UI floor */
-  --color-text: #edeff5;
-  --color-text-muted: #9aa1b2;
-  --color-accent: #6ee7c7;
-  --color-on-accent: #04211b;
-  --color-danger: #ff7a7a;
-  --color-success: #6fe39a;
+  --color-bg: #0c0a09;
+  --color-surface: #151210;
+  --color-surface-2: #1e1a16;
+  --color-border: #3f3833;        /* decorative divider, not a contrast boundary */
+  --color-border-input: #6b625a;  /* 3.31:1 on bg — meets the UI floor */
+  --color-text: #f3eee8;
+  --color-text-muted: #a8a09a;
+  --color-accent: #f2b544;
+  --color-on-accent: #241a05;
+  --color-danger: #ff8a8a;
+  --color-success: #7fd6a0;
 
   /* type — system stack, no licensed font, no network request */
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,

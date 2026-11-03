@@ -53,7 +53,7 @@ export default function Liked() {
 
       {error && <p role="alert" className="text-sm text-danger">{error}</p>}
       {!error && songs && visible.length === 0 && (
-        <p className="text-sm text-text-muted">Tracks you like appear here.</p>
+        <p className="text-sm text-text-muted">Nothing liked yet. Tap the heart on a track.</p>
       )}
 
       <div>

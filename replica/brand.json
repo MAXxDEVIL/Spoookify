@@ -1,0 +1,20 @@
+{
+  "name": "Wholecrate",
+  "avoid": [
+    "Spotify",
+    "Spoookify",
+    "Spotify AB"
+  ],
+  "domains": [
+    "spotify.com",
+    "spotifycdn.com",
+    "scdn.co"
+  ],
+  "colors": [
+    "#1db954",
+    "#1ed760",
+    "#191414",
+    "#121212",
+    "#6ee7c7"
+  ]
+}

@@ -36,7 +36,7 @@ export default function QueueSheet() {
         </div>
 
         {state.queue.length === 0 ? (
-          <p className="px-4 py-6 text-sm text-text-muted">Nothing queued. Play an album or add a track.</p>
+          <p className="px-4 py-6 text-sm text-text-muted">The queue is empty. Play an album, or add a track.</p>
         ) : (
           <ol className="max-h-[60dvh] overflow-y-auto py-2">
             {state.queue.map((track, index) => {

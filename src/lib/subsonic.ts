@@ -47,7 +47,7 @@ export type ServerConfig = {
   password: string
 }
 
-const CONFIG_KEY = 'spoookify.server'
+const CONFIG_KEY = 'wholecrate.server'
 
 export function loadConfig(): ServerConfig | null {
   try {
@@ -83,7 +83,7 @@ export function endpoint(
   url.searchParams.set('u', config.user)
   url.searchParams.set('p', config.password)
   url.searchParams.set('v', '1.16.1')
-  url.searchParams.set('c', 'Spoookify')
+  url.searchParams.set('c', 'Wholecrate')
   url.searchParams.set('f', 'json')
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined && value !== '') url.searchParams.set(key, String(value))

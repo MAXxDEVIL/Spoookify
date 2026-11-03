@@ -14,7 +14,7 @@ test.describe('F05 resume last track', () => {
     // pagehide handler overwrite it with the live queue on reload.
     await page.evaluate(() => {
       localStorage.setItem(
-        'spoookify.player',
+        'wholecrate.player',
         JSON.stringify({
           queue: [
             { id: 's1', title: 'Neon Hours', artist: 'The Signals', duration: 180, coverArt: 'c1' },
@@ -41,7 +41,7 @@ test.describe('F05 resume last track', () => {
     await page.goto('/')
     await page.evaluate(() => {
       localStorage.setItem(
-        'spoookify.player',
+        'wholecrate.player',
         JSON.stringify({
           queue: [{ id: 'gone', title: 'Deleted Track', artist: 'Nobody', duration: 180 }],
           index: 0,

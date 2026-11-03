@@ -12,6 +12,7 @@ import Album from './pages/Album'
 import Artist from './pages/Artist'
 import Home from './pages/Home'
 import Landing from './pages/Landing'
+import { Privacy, Terms } from './pages/Legal'
 import Library from './pages/Library'
 import Liked from './pages/Liked'
 import Playlist from './pages/Playlist'
@@ -41,6 +42,8 @@ function Shell() {
 
   if (!config) {
     if (pathname === '/') return <Landing />
+    if (pathname === '/privacy') return <Privacy />
+    if (pathname === '/terms') return <Terms />
     if (pathname !== '/settings') return <Navigate to="/settings" replace />
   }
 

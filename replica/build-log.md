@@ -186,3 +186,34 @@ Launch docs in `replica/launch/`:
 Gates: `sweep.py` Clean (exit 0), `contrast.py` 13 pairs / 0 failing AA, `npm run build`
 green (315.25 kB JS / 21.55 kB CSS), `npm test` 14/14, `npm run e2e` 19/19. Committed as
 "Launch Wholecrate with a landing page and a fair shuffle".
+
+## Step 12 — deploy (replica-deploy)
+
+**Prepared, not deployed.** Two things need a human: the Vercel account and the domain
+purchase. `replica/deploy.md` is the filled preflight, the exact DNS records, and the
+post-deploy smoke list. Nothing was bought, no account was created and no live key was
+touched.
+
+Made the missing preflight items real instead of ticking them:
+
+- `LICENSE` (MIT) — the README claimed open source without one.
+- `/privacy` and `/terms` as real routes, reachable without a server. Privacy names the
+  only processor (Vercel request logs), states that credentials live in `localStorage` and
+  go only to the user's server, and that no cookies, analytics or third-party calls exist.
+  Terms name the MIT licence, the no-warranty position and the user's responsibility for
+  their files. Both were rewritten after axe flagged the first version for missing a
+  `<main>` landmark; `F07-H2` now covers both pages and the axe gate.
+- `README.md` with the actual run, CORS and build commands; the previous file was four
+  lines and could not get a stranger from clone to playback.
+- `index.html`: title, description, OG/Twitter tags and OG image. `vercel.json` rewrites
+  every path to `index.html` so `/settings` and `/privacy` survive a refresh.
+- `App.tsx` lets `/privacy` and `/terms` through the no-config guard.
+
+Preflight: e2e **20/20**, unit **14/14**, parity **66.7** with **13/13** must-haves, sweep
+Clean (exit 0), listing 0 errors / 0 warnings, build 320.26 kB JS / 22.29 kB CSS. No open
+S1/S2 bugs.
+
+Not applicable and written down as such: no database, no env vars, no Stripe, no OAuth, no
+email sending, no mobile build. The one thing not tested here is live playback against a
+real server — there is no Navidrome or Docker in this environment. The user's smoke run is
+the gate for that, and `deploy.md` says so instead of claiming it passed.

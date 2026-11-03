@@ -18,4 +18,20 @@ test.describe('F07 first visit', () => {
     await expect(page.getByRole('heading', { name: 'Point Wholecrate at your music' })).toBeVisible()
     await expectClean(problems)
   })
+
+  test('F07-H2 privacy and terms open without a server', async ({ page }) => {
+    const problems = watchProblems(page)
+
+    await page.goto('/privacy')
+    await expect(page.getByRole('heading', { name: 'Privacy', exact: true })).toBeVisible()
+    await expect(page.getByText('No cookies are set.')).toBeVisible()
+
+    const a11y = await new AxeBuilder({ page }).analyze()
+    expect(a11y.violations).toEqual([])
+
+    await page.getByRole('link', { name: 'Wholecrate' }).click()
+    await page.getByRole('link', { name: 'Terms' }).click()
+    await expect(page.getByRole('heading', { name: 'Terms', exact: true })).toBeVisible()
+    await expectClean(problems)
+  })
 })

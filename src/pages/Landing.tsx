@@ -151,8 +151,14 @@ export default function Landing() {
         </section>
       </main>
 
-      <footer className="mx-auto max-w-5xl px-4 py-8 text-sm text-text-muted sm:px-8">
-        Wholecrate — open source, runs with Navidrome and Subsonic.
+      <footer className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-8 text-sm text-text-muted sm:px-8">
+        <span>Wholecrate — open source, runs with Navidrome and Subsonic.</span>
+        <Link to="/privacy" className="underline hover:text-text">
+          Privacy
+        </Link>
+        <Link to="/terms" className="underline hover:text-text">
+          Terms
+        </Link>
       </footer>
     </div>
   )

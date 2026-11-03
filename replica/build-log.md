@@ -84,3 +84,32 @@ No layout score: recon kept links and structural notes, not screenshots, so ther
 to diff against. `replica/parity.md` compares structure and behaviour instead, with click counts
 per flow. Verdict: all must-haves done, no open S1/S2, feature score below the 80 bar →
 **not shippable yet**; top five gaps listed there.
+
+## Step 9 — user research (replica-entrepreneur)
+
+Collected real public feedback, no fabricated rows: 148 US App Store reviews (official
+customer-reviews RSS), 357 Hacker News comments (Algolia API) and 22 Reddit posts (public
+RSS). 527 usable rows from 3 sources; dates 2010-08-24 to 2026-11-01. Reddit JSON and
+Trustpilot return 403 and Spotify Community is client-rendered, so those sources are absent
+and said so rather than guessed.
+
+`reviews.py` with a Spotify-specific `themes-spotify.json` ranks, in order: repetitive
+recommendations/algorithm (124 rows, 3 sources), ads (76, 3), shuffle not random (78, 3),
+price/paywalls (67, 3), queue (56, 3, avg 1.7), slow/heavy (27, 3), offline (31, 3),
+podcasts/non-music (28, 2). Single-source and small themes are marked thin: desktop/web (43),
+own-library control (21), playlist sorting (8), editable queue (4).
+
+Five fixes chosen by evidence times cost: uniform shuffle on every play and each repeat
+cycle (a real reducer gap: `play` ignores the shuffle toggle), queue reorder + play next,
+library sort and filter-as-you-type, reconnect banner with retry, and a PWA shell. Added as
+`original=no`, `clone=no` rows in `features.csv`; parity stays 66.7 because extras are not
+scored.
+
+Angle recommended: for people who own their music and are tired of hearing the same songs,
+play the files they already have with one uniform shuffle, no algorithm and no ads. Grounded
+in the two strongest themes across all three sources.
+
+Limits written into `fixes.md`: HN rows are comments not app reviews and some only mention
+Spotify in passing; App Store RSS has no per-review permalink, so those rows link to the
+app's review page; 379 of 527 rows are unrated. All 23 quotes in `fixes.md` were checked
+as verbatim substrings of `reviews.csv` after line-wrap normalisation.

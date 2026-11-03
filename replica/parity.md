@@ -89,6 +89,20 @@ against the recon notes instead:
 Then: drag reorder (queue and playlist), context menu with play-next, empty-state illustrations,
 add-tracks live filter, full-screen mobile player, lyrics, themes.
 
+## Step 9: fixes from user research
+
+Five rows were added to `features.csv` as `original=no`, `clone=no`. Extras are not
+counted, so the score stays **66.7 / 100**. The review evidence re-orders the build list:
+
+1. uniform shuffle on every play and each repeat cycle (a real reducer gap),
+2. drag reorder the queue and play next,
+3. library sort and filter-as-you-type,
+4. reconnect banner with retry,
+5. installable PWA with a cached app shell.
+
+See `replica/fixes.md`. The top-five above is parity-only judgement; where they disagree,
+step 9 wins because it is backed by user evidence.
+
 ## Not in this score, on purpose
 
 Licensed catalogue, podcasts/audiobooks, recommendations, AI DJ, social/collaborative

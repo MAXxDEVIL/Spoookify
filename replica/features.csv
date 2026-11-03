@@ -43,3 +43,8 @@ Cast and multi device Connect,platform,should,yes,skip,platform integrations not
 Spotify Wrapped and yearly stats,extras,could,yes,skip,marketing feature
 Concert and event listings,extras,could,yes,skip,partner data
 Spotify account import,onboarding,could,yes,skip,needs their API and auth; not worth the terms risk
+Uniform shuffle on every new play and each repeat cycle,playback,must,no,no,step 9 fix: play ignores shuffle toggle; repeat-all reuses the same order
+Drag to reorder the queue and play next,playback,should,no,no,step 9 fix: queue 56 reviews across 3 sources
+Library sort and filter as you type,library,should,no,no,step 9 fix: no sort/filter today; playlist add needs a Search press
+Reconnect banner and automatic retry,reliability,must,no,no,step 9 fix: a failed server call leaves a dead screen
+Installable PWA with cached app shell,platform,should,no,no,step 9 fix: shell only; audio still needs the Subsonic server

@@ -1,0 +1,318 @@
+{
+  "_about": "Spotify-category themes for replica-entrepreneur. Patterns are regexes matched case-insensitively. Only complaint/request themes that matter for a Spotify-style client on a personal music library (Subsonic/Navidrome) - no karaoke, no concerts.",
+  "request_patterns": [
+    "\\bi wish\\b",
+    "\\bplease (add|make|give|bring)\\b",
+    "\\bwould be (nice|great|good|helpful|better)\\b",
+    "\\bwould love\\b",
+    "\\bneeds? (a|an|the|to|more|real)\\b",
+    "\\bno way to\\b",
+    "\\bthere'?s no (way|option)\\b",
+    "\\b(can'?t|cannot|unable to) (even )?(add|change|edit|set|choose|export|import|customi[sz]e|connect|undo|delete|turn off|find|search|sort)\\b",
+    "\\b(missing|lacks|lacking)\\b",
+    "\\bdoesn'?t (have|support|let|allow)\\b",
+    "\\bif only\\b",
+    "\\bfeature request\\b",
+    "\\bwhy (can'?t|isn'?t|doesn'?t|do they)\\b",
+    "\\b(should|needs to) (be|have|let|allow|add|bring back)\\b",
+    "\\bbring back\\b"
+  ],
+  "themes": [
+    {
+      "id": "shuffle",
+      "label": "Shuffle is not random",
+      "kind": "complaint",
+      "patterns": [
+        "\\bshuffle\\b",
+        "\\brandom(ly|ness)?\\b",
+        "\\bsmart shuffle\\b"
+      ]
+    },
+    {
+      "id": "recommendations",
+      "label": "Repetitive recommendations and algorithm",
+      "kind": "complaint",
+      "patterns": [
+        "\\brecommendations?\\b",
+        "\\bsuggestions?\\b",
+        "\\bthe algorithm\\b",
+        "\\bdiscover weekly\\b",
+        "\\bdaily mix(es)?\\b",
+        "\\bsame (songs|tracks|music)\\b",
+        "\\brepeat(ing|s)? the same\\b",
+        "\\bradio\\b"
+      ]
+    },
+    {
+      "id": "ads",
+      "label": "Ads",
+      "kind": "complaint",
+      "patterns": [
+        "\\bads?\\b",
+        "\\badvert",
+        "\\bcommercial"
+      ]
+    },
+    {
+      "id": "pricing",
+      "label": "Price and paywalls",
+      "kind": "complaint",
+      "patterns": [
+        "\\bexpensive\\b",
+        "\\boverpriced\\b",
+        "\\bpric(e|es|ey|ing)\\b",
+        "\\bpaywall",
+        "\\bpremium\\b",
+        "\\bsubscription\\b",
+        "\\bnot worth\\b",
+        "\\bcost(s|ly)?\\b",
+        "\\bprice (hike|increase)"
+      ]
+    },
+    {
+      "id": "offline",
+      "label": "Offline downloads and playback",
+      "kind": "complaint",
+      "patterns": [
+        "\\boffline\\b",
+        "\\bdownload",
+        "\\bno (signal|connection|internet)",
+        "\\bairplane mode\\b"
+      ]
+    },
+    {
+      "id": "library",
+      "label": "Library, liked songs and playlists",
+      "kind": "complaint",
+      "patterns": [
+        "\\bliked songs\\b",
+        "\\b(library|playlists?) (management|organizing|organization|sorting)\\b",
+        "\\b(can'?t|cannot|unable to) (find|organize|sort|edit|delete|merge) .{0,30}(library|playlist|song)",
+        "\\bplaylists? (is|are|was|were) (broken|messed|gone|missing|empty|ruined)",
+        "\\borgani[sz]e\\b",
+        "\\bfavorites?\\b"
+      ]
+    },
+    {
+      "id": "queue",
+      "label": "Queue and playback control",
+      "kind": "complaint",
+      "patterns": [
+        "\\bqueue\\b",
+        "\\bnow playing\\b",
+        "\\bplay next\\b",
+        "\\bskip(ped|ping)?\\b",
+        "\\bplayback\\b"
+      ]
+    },
+    {
+      "id": "ui-update",
+      "label": "A redesign or update made it worse",
+      "kind": "complaint",
+      "patterns": [
+        "\\b(new|latest|recent) (update|ui|design|layout|version)",
+        "\\bredesign",
+        "\\bthey (changed|moved|removed|ruined)\\b",
+        "\\bbring back\\b",
+        "\\bupdate (ruined|broke|made)",
+        "\\bworse\\b",
+        "\\bwalled garden"
+      ]
+    },
+    {
+      "id": "podcasts",
+      "label": "Podcasts and non-music pushed in",
+      "kind": "complaint",
+      "patterns": [
+        "\\bpodcast",
+        "\\baudiobooks?\\b",
+        "\\bvideo (podcast|content)",
+        "\\bnot music\\b",
+        "\\bshove(d|s)? (podcasts|video)"
+      ]
+    },
+    {
+      "id": "audio-quality",
+      "label": "Audio quality, volume and gapless",
+      "kind": "complaint",
+      "patterns": [
+        "\\b(audio )?quality\\b",
+        "\\blossless\\b",
+        "\\bhi-?fi\\b",
+        "\\bbitrate\\b",
+        "\\bvolume\\b",
+        "\\bgapless\\b",
+        "\\bcrossfade\\b",
+        "\\bquiet\\b"
+      ]
+    },
+    {
+      "id": "social",
+      "label": "Friends, sharing and Jam",
+      "kind": "complaint",
+      "patterns": [
+        "\\bsharing (is|sucks|doesn'?t|does not)",
+        "\\b(find|add) friends\\b",
+        "\\bfriends (can'?t|activity|feed|list)",
+        "\\bjam\\b",
+        "\\bplaylist (collab|sharing)",
+        "\\bsocial (features?|feed|graph)"
+      ]
+    },
+    {
+      "id": "bugs",
+      "label": "Bugs and crashes",
+      "kind": "complaint",
+      "patterns": [
+        "\\bbug(s|gy)?\\b",
+        "\\bcrash(es|ed|ing)?\\b",
+        "\\bfreez(e|es|ing)\\b",
+        "\\bglitch",
+        "\\bbroken\\b",
+        "\\bwon'?t (load|play|open|work)",
+        "\\bnot working\\b"
+      ]
+    },
+    {
+      "id": "performance",
+      "label": "Slow, laggy, heavy",
+      "kind": "complaint",
+      "patterns": [
+        "\\bslow\\b",
+        "\\blag(gy|ging)?\\b",
+        "\\blatency\\b",
+        "\\bperformance\\b",
+        "\\bbattery\\b",
+        "\\bram\\b",
+        "\\bcpu\\b",
+        "\\bheavy\\b",
+        "\\btakes forever\\b"
+      ]
+    },
+    {
+      "id": "search-discovery",
+      "label": "Search and finding new music",
+      "kind": "complaint",
+      "patterns": [
+        "\\bsearch (is|sucks|doesn'?t|does not|bar|results|function|box)",
+        "\\b(can'?t|cannot|unable to) find\\b",
+        "\\bfind(ing)? (new )?(music|songs|artists)\\b",
+        "\\bdiscover(y|ies)? (sucks|is|algorithm|tab)\\b",
+        "\\bdiscover weekly\\b"
+      ]
+    },
+    {
+      "id": "desktop-web",
+      "label": "Desktop and web player",
+      "kind": "complaint",
+      "patterns": [
+        "\\bdesktop (app|client|player)\\b",
+        "\\bweb player\\b",
+        "\\bbrowser\\b",
+        "\\belectron\\b",
+        "\\bwindows app\\b",
+        "\\bmac app\\b"
+      ]
+    },
+    {
+      "id": "login-account",
+      "label": "Login and account problems",
+      "kind": "complaint",
+      "patterns": [
+        "\\blog ?in\\b",
+        "\\bsign ?in\\b",
+        "\\bpassword\\b",
+        "\\baccount (locked|hacked|deleted|issue)",
+        "\\b2fa\\b",
+        "\\bregion\\b",
+        "\\bcountry\\b"
+      ]
+    },
+    {
+      "id": "real-shuffle",
+      "label": "A genuinely random shuffle",
+      "kind": "request",
+      "patterns": [
+        "\\btrue random\\b",
+        "\\breal(ly)? random\\b",
+        "\\brandom(ize|ise)? (all|the) (songs|library|playlist)",
+        "\\bshuffle (all|everything|my library)",
+        "\\bfix (the )?shuffle"
+      ]
+    },
+    {
+      "id": "no-podcasts",
+      "label": "Music only, no podcasts or video",
+      "kind": "request",
+      "patterns": [
+        "\\bonly music\\b",
+        "\\bmusic only\\b",
+        "\\bno podcasts?\\b",
+        "\\bremove podcasts?\\b",
+        "\\bseparate (the )?music\\b",
+        "\\bhide podcasts?"
+      ]
+    },
+    {
+      "id": "playlist-editing",
+      "label": "Better playlist editing and sorting",
+      "kind": "request",
+      "patterns": [
+        "\\bsort (by|the)\\b",
+        "\\breorder\\b",
+        "\\bdrag (and drop|to)\\b",
+        "\\bbulk (edit|delete|add)\\b",
+        "\\bfolders?\\b",
+        "\\bplaylist (sort|order|edit|management)"
+      ]
+    },
+    {
+      "id": "queue-control",
+      "label": "Editable queue",
+      "kind": "request",
+      "patterns": [
+        "\\b(edit|manage|clear|reorder) (the )?queue\\b",
+        "\\bqueue (management|control|up next)\\b",
+        "\\badd to queue\\b"
+      ]
+    },
+    {
+      "id": "better-recommendations",
+      "label": "Recommendations that are not the same songs",
+      "kind": "request",
+      "patterns": [
+        "\\bbetter (recommend|suggest|algorithm)",
+        "\\bnew music\\b",
+        "\\bmore variety\\b",
+        "\\bnot the same (songs|tracks)",
+        "\\bdeep cuts\\b"
+      ]
+    },
+    {
+      "id": "library-control",
+      "label": "Own and organize the library",
+      "kind": "request",
+      "patterns": [
+        "\\bimport (my )?(library|playlists|music)",
+        "\\bexport\\b",
+        "\\blocal (files|music|library)\\b",
+        "\\bown (my )?(music|library)",
+        "\\bmp3\\b",
+        "\\bflac\\b",
+        "\\bcustom (sort|order)"
+      ]
+    },
+    {
+      "id": "audio-quality-request",
+      "label": "Lossless and better audio",
+      "kind": "request",
+      "patterns": [
+        "\\blossless\\b",
+        "\\bhi-?res\\b",
+        "\\bflac\\b",
+        "\\bbetter (audio|sound) quality\\b",
+        "\\bhigher (bitrate|quality)\\b"
+      ]
+    }
+  ]
+}

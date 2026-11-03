@@ -1,0 +1,45 @@
+feature,area,priority,original,clone,notes
+Browse albums artists and playlists,library,must,yes,no,
+Play pause next previous,playback,must,yes,no,
+Seek within a track,playback,must,yes,no,
+Volume control and mute,playback,must,yes,no,
+Queue panel with add remove clear,playback,must,yes,no,
+Search tracks albums artists,search,must,yes,no,
+Like and unlike a track,library,must,yes,no,
+Create rename delete playlist and add tracks,playlists,must,yes,no,
+Shuffle and repeat modes,playback,must,yes,no,
+Connect to a server with URL and credentials,onboarding,must,yes,no,
+Persistent now playing bar on every screen,layout,must,yes,no,
+Responsive layout down to phone width,layout,must,yes,no,
+Empty loading and error state on every list,ux,must,yes,no,
+Skip limit and forced shuffle,playback,skip,no,no,"a Spotify restriction, not a feature we want"
+Track context menu play next add to queue,playback,should,yes,no,
+Drag to reorder the queue,playback,should,yes,no,
+Drag to reorder playlist tracks,playlists,should,yes,no,
+Recently played list,library,should,yes,no,
+Sort and filter the library,library,should,yes,no,
+Media Session lock screen and media keys,playback,should,yes,no,
+Installable PWA,platform,should,yes,no,
+Keyboard shortcuts space arrows slash,ux,should,yes,no,
+Optimistic like with rollback on failure,ux,should,yes,no,
+Remember volume shuffle repeat across reloads,playback,should,yes,no,
+Reconnect and retry when the server drops,reliability,should,yes,no,
+Lyrics from LRCLIB,extras,could,yes,no,
+Sleep timer,extras,could,yes,no,
+Light dark and auto theme,ux,could,yes,no,
+Full screen now playing on mobile,layout,could,yes,no,
+Offline cache of artwork and metadata,platform,could,yes,no,
+Stream the licensed catalogue,catalogue,skip,yes,no,licensed content is not ours to serve
+Podcasts and audiobooks,content,skip,yes,no,licensed content
+Personalised recommendations and Discover Weekly,discovery,skip,yes,no,needs listening data at a scale a self hosted library cannot reach
+AI DJ and daylist,discovery,skip,yes,no,same as recommendations
+Social follow shared and collaborative playlists,social,skip,yes,no,needs the network; single user model
+Jam listening sessions with friends,social,skip,yes,no,realtime multi user
+Ads,monetisation,skip,yes,no,we are free by construction
+Subscriptions and billing,monetisation,skip,yes,no,no money changes hands
+Offline downloads,platform,skip,yes,no,premium gate; optional later
+Lossless audio,playback,skip,yes,no,premium gate; depends on source files
+Cast and multi device Connect,platform,skip,yes,no,platform integrations not UX
+Spotify Wrapped and yearly stats,extras,skip,yes,no,marketing feature
+Concert and event listings,extras,skip,yes,no,partner data
+Spotify account import,onboarding,skip,yes,no,needs their API and auth; not worth the terms risk

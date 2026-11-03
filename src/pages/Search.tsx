@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Cover from '../components/Cover'
+import MediaCard from '../components/MediaCard'
 import TrackRow from '../components/TrackRow'
 import { search as searchLibrary, type Album, type Artist, type Track } from '../lib/subsonic'
 import { usePlayer } from '../state/player'
@@ -112,15 +112,13 @@ export default function Search() {
           <h2 className="mb-2 text-sm font-semibold text-text-muted">Albums</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {results.albums.map((album) => (
-              <Link
+              <MediaCard
                 key={album.id}
                 to={`/album/${album.id}`}
-                className="rounded-md p-2 hover:bg-surface-2"
-              >
-                <Cover id={album.coverArt} className="aspect-square w-full rounded-sm" />
-                <p className="mt-2 truncate text-sm">{album.name}</p>
-                <p className="truncate text-xs text-text-muted">{album.artist}</p>
-              </Link>
+                title={album.name}
+                subtitle={album.artist}
+                coverArt={album.coverArt}
+              />
             ))}
           </div>
         </section>
@@ -131,8 +129,13 @@ export default function Search() {
           <h2 className="mb-2 text-sm font-semibold text-text-muted">Artists</h2>
           <ul className="flex flex-wrap gap-2">
             {results.artists.map((artist) => (
-              <li key={artist.id} className="rounded-pill border border-border px-3 py-1 text-sm text-text-muted">
-                {artist.name}
+              <li key={artist.id}>
+                <Link
+                  to={`/artist/${artist.id}`}
+                  className="block rounded-pill border border-border px-3 py-1 text-sm text-text-muted hover:text-text"
+                >
+                  {artist.name}
+                </Link>
               </li>
             ))}
           </ul>

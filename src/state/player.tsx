@@ -6,7 +6,7 @@ import {
   useRef,
   type ReactNode,
 } from 'react'
-import { streamUrl, type Track } from '../lib/subsonic'
+import { scrobble, streamUrl, type Track } from '../lib/subsonic'
 import { useServer } from './server'
 
 export type Repeat = 'off' | 'all' | 'one'
@@ -44,6 +44,10 @@ export type Action =
   | { type: 'volume'; volume: number }
   | { type: 'shuffle' }
   | { type: 'repeat' }
+  | { type: 'enqueue'; tracks: Track[] }
+  | { type: 'removeAt'; index: number }
+  | { type: 'clear' }
+  | { type: 'jump'; index: number }
 
 const PLAYER_KEY = 'spoookify.player'
 
@@ -117,6 +121,40 @@ export function reducer(state: PlayerState, action: Action): PlayerState {
       const order: Repeat[] = ['off', 'all', 'one']
       return { ...state, repeat: order[(order.indexOf(state.repeat) + 1) % order.length] }
     }
+    case 'enqueue': {
+      if (!action.tracks.length) return state
+      if (!state.queue.length) {
+        return { ...state, queue: action.tracks, index: 0, positionMs: 0, playing: true }
+      }
+      return { ...state, queue: [...state.queue, ...action.tracks] }
+    }
+    case 'removeAt': {
+      if (action.index < 0 || action.index >= state.queue.length) return state
+      const queue = state.queue.filter((_, i) => i !== action.index)
+      if (!queue.length) {
+        return {
+          ...initialState,
+          volume: state.volume,
+          shuffle: state.shuffle,
+          repeat: state.repeat,
+          seq: state.seq + 1,
+        }
+      }
+      if (action.index < state.index) return { ...state, queue, index: state.index - 1 }
+      if (action.index === state.index) {
+        return { ...state, queue, index: Math.min(state.index, queue.length - 1), positionMs: 0, seq: state.seq + 1 }
+      }
+      return { ...state, queue }
+    }
+    case 'clear': {
+      const current = state.queue[state.index]
+      if (!current) return state
+      return { ...state, queue: [current], index: 0 }
+    }
+    case 'jump': {
+      if (action.index < 0 || action.index >= state.queue.length) return state
+      return { ...state, index: action.index, positionMs: 0, playing: true, seq: state.seq + 1 }
+    }
     default:
       return state
   }
@@ -144,6 +182,10 @@ type PlayerApi = {
   setVolume: (volume: number) => void
   toggleShuffle: () => void
   cycleRepeat: () => void
+  addToQueue: (tracks: Track[]) => void
+  removeFromQueue: (index: number) => void
+  clearQueue: () => void
+  playAt: (index: number) => void
 }
 
 const PlayerContext = createContext<PlayerApi | null>(null)
@@ -157,10 +199,17 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   // Load a track only when its identity changes; positionMs is read, never watched.
   useEffect(() => {
     const audio = audioRef.current
-    if (!audio || !current || !config) return
+    if (!audio) return
+    if (!current || !config) {
+      audio.pause()
+      audio.removeAttribute('src')
+      audio.load()
+      return
+    }
     audio.src = streamUrl(config, current.id)
     audio.currentTime = state.positionMs / 1000
     if (state.playing) void audio.play().catch(() => {})
+    void scrobble(config, current.id).catch(() => {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current?.id, state.seq, config])
 
@@ -205,6 +254,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setVolume: (volume) => dispatch({ type: 'volume', volume }),
     toggleShuffle: () => dispatch({ type: 'shuffle' }),
     cycleRepeat: () => dispatch({ type: 'repeat' }),
+    addToQueue: (tracks) => dispatch({ type: 'enqueue', tracks }),
+    removeFromQueue: (index) => dispatch({ type: 'removeAt', index }),
+    clearQueue: () => dispatch({ type: 'clear' }),
+    playAt: (index) => dispatch({ type: 'jump', index }),
   }
 
   return (

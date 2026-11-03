@@ -1,28 +1,28 @@
 feature,area,priority,original,clone,notes
-Browse albums artists and playlists,library,must,yes,partial,"album pages work from search; library, artist and playlist screens are step 5"
+Browse albums artists and playlists,library,must,yes,yes,
 Play pause next previous,playback,must,yes,yes,
 Seek within a track,playback,must,yes,yes,hidden under 640px until the full-screen player exists
 Volume control and mute,playback,must,yes,partial,volume slider and mute on the bar; hidden under 640px
-Queue panel with add remove clear,playback,must,yes,no,
-Search tracks albums artists,search,must,yes,partial,artists are non-interactive chips until S04 exists
-Like and unlike a track,library,must,yes,no,
-Create rename delete playlist and add tracks,playlists,must,yes,no,
+Queue panel with add remove clear,playback,must,yes,yes,
+Search tracks albums artists,search,must,yes,yes,
+Like and unlike a track,library,must,yes,yes,
+Create rename delete playlist and add tracks,playlists,must,yes,yes,
 Shuffle and repeat modes,playback,must,yes,yes,
 Connect to a server with URL and credentials,onboarding,must,yes,yes,
 Persistent now playing bar on every screen,layout,must,yes,yes,
 Responsive layout down to phone width,layout,must,yes,partial,mobile bar checked in markup only; no browser in this session
-Empty loading and error state on every list,ux,must,yes,partial,search and album only; other lists not built yet
+Empty loading and error state on every list,ux,must,yes,yes,
 Skip limit and forced shuffle,playback,skip,no,no,"a Spotify restriction, not a feature we want"
-Track context menu play next add to queue,playback,should,yes,no,
+Track context menu play next add to queue,playback,should,yes,partial,add to queue is a row icon; no play next and no right-click menu
 Drag to reorder the queue,playback,should,yes,no,
 Drag to reorder playlist tracks,playlists,should,yes,no,
-Recently played list,library,should,yes,no,
+Recently played list,library,should,yes,yes,first row of Home via getAlbumList2 type=recent
 Sort and filter the library,library,should,yes,no,
 Media Session lock screen and media keys,playback,should,yes,no,
 Installable PWA,platform,should,yes,no,
 Keyboard shortcuts space arrows slash,ux,should,yes,no,
 Optimistic like with rollback on failure,ux,should,yes,no,
-Remember volume shuffle repeat across reloads,playback,should,yes,no,
+Remember volume shuffle repeat across reloads,playback,should,yes,yes,same localStorage payload as the queue
 Reconnect and retry when the server drops,reliability,should,yes,no,
 Lyrics from LRCLIB,extras,could,yes,no,
 Sleep timer,extras,could,yes,no,

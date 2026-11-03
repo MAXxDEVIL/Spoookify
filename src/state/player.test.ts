@@ -32,4 +32,50 @@ describe('player reducer', () => {
     expect(shuffled.index).toBe(0)
     expect(shuffled.queue.map((t) => t.id).sort()).toEqual(['a', 'b', 'c'])
   })
+
+  it('enqueue appends, or starts playback when the queue is empty', () => {
+    expect(reducer(seeded, { type: 'enqueue', tracks: [track('d')] }).queue.map((t) => t.id)).toEqual([
+      'a',
+      'b',
+      'c',
+      'd',
+    ])
+    expect(reducer(initialState, { type: 'enqueue', tracks: [track('d')] })).toMatchObject({
+      queue: [{ id: 'd' }],
+      index: 0,
+      playing: true,
+    })
+  })
+
+  it('removing a track before the current one shifts the index', () => {
+    const next = reducer({ ...seeded, index: 2 }, { type: 'removeAt', index: 0 })
+    expect(next.queue.map((t) => t.id)).toEqual(['b', 'c'])
+    expect(next.index).toBe(1)
+    expect(next.queue[next.index].id).toBe('c')
+  })
+
+  it('removing the current track advances to the next one', () => {
+    const next = reducer({ ...seeded, index: 1 }, { type: 'removeAt', index: 1 })
+    expect(next.queue.map((t) => t.id)).toEqual(['a', 'c'])
+    expect(next.queue[next.index].id).toBe('c')
+    expect(next.positionMs).toBe(0)
+  })
+
+  it('removing the last track stops playback', () => {
+    const next = reducer({ ...initialState, queue: [track('a')], playing: true }, { type: 'removeAt', index: 0 })
+    expect(next.queue).toEqual([])
+    expect(next.playing).toBe(false)
+  })
+
+  it('clear keeps only the current track', () => {
+    const next = reducer({ ...seeded, index: 1 }, { type: 'clear' })
+    expect(next.queue.map((t) => t.id)).toEqual(['b'])
+    expect(next.index).toBe(0)
+    expect(next.playing).toBe(true)
+  })
+
+  it('jump restarts the audio at the chosen index', () => {
+    const next = reducer({ ...seeded, playing: false, seq: 4 }, { type: 'jump', index: 2 })
+    expect(next).toMatchObject({ index: 2, positionMs: 0, playing: true, seq: 5 })
+  })
 })

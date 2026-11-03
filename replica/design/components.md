@@ -44,13 +44,14 @@ Used: S03 S05 S07 S08.
 ### SegmentedTabs
 One control, three items max, underline moves to the active item.
 States: default, hover, active, focus-visible, disabled.
-Roles: `tablist` / `tab` / `tabpanel`. Arrow keys move between tabs.
+Roles: `group` + buttons with `aria-pressed`. No `tablist`/`tabpanel`: the panels
+are plain content swaps, so arrow-key tab semantics would be extra machinery.
 Used: S02 S06.
 
 ### Dialog
-Native `<dialog>` with `showModal()`. Bottom sheet under 640px, centred panel
-above. Focus trap and Escape come from the platform, not from us.
-States: open, closing (200ms), scrollable body.
+Native `<dialog>` with `showModal()`. Centred panel at every width.
+Focus trap and Escape come from the platform, not from us.
+States: open, closing, scrollable body, busy, error.
 Used: S08 queue, S10 settings, S05 playlist edit.
 
 ### EmptyState

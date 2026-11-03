@@ -13,6 +13,7 @@ import { type ReactNode } from 'react'
 import { formatTime } from '../lib/format'
 import { usePlayer } from '../state/player'
 import Cover from './Cover'
+import QueueSheet from './QueueSheet'
 
 export default function PlayerBar() {
   const { state, toggle, next, prev, seek, setVolume, toggleShuffle, cycleRepeat } = usePlayer()
@@ -106,6 +107,8 @@ export default function PlayerBar() {
             className="h-1 flex-1 accent-accent"
           />
         </div>
+
+        <QueueSheet />
       </div>
     </footer>
   )

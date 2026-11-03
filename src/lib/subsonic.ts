@@ -27,6 +27,20 @@ export type Artist = {
   coverArt?: string
 }
 
+export type Playlist = {
+  id: string
+  name: string
+  owner?: string
+  songCount?: number
+  duration?: number
+  coverArt?: string
+  entry?: Track[]
+}
+
+export type PlaylistDetail = Playlist & { entries: Track[] }
+
+export type ArtistDetail = Artist & { albums: Album[] }
+
 export type ServerConfig = {
   url: string
   user: string
@@ -127,6 +141,68 @@ export async function getAlbum(config: ServerConfig, id: string) {
   if (!result.album) throw new Error('Album not found.')
   return { ...result.album, songs: result.album.song ?? [] }
 }
+
+export async function listAlbums(
+  config: ServerConfig,
+  type: 'newest' | 'recent' | 'random' | 'alphabeticalByName' = 'newest',
+  size = 50,
+  offset = 0,
+) {
+  const result = await api<{ albumList2?: { album?: Album[] } }>(config, 'getAlbumList2', {
+    type,
+    size,
+    offset,
+  })
+  return result.albumList2?.album ?? []
+}
+
+export async function listArtists(config: ServerConfig) {
+  const result = await api<{
+    artists?: { index?: { name?: string; artist?: Artist[] }[] }
+  }>(config, 'getArtists')
+  return (result.artists?.index ?? []).flatMap((entry) => entry.artist ?? [])
+}
+
+export async function getArtist(config: ServerConfig, id: string): Promise<ArtistDetail> {
+  const result = await api<{ artist?: Artist & { album?: Album[] } }>(config, 'getArtist', { id })
+  if (!result.artist) throw new Error('Artist not found.')
+  const { album, ...artist } = result.artist
+  return { ...artist, albums: album ?? [] }
+}
+
+export async function listPlaylists(config: ServerConfig) {
+  const result = await api<{ playlists?: { playlist?: Playlist[] } }>(config, 'getPlaylists')
+  return result.playlists?.playlist ?? []
+}
+
+export async function getPlaylist(config: ServerConfig, id: string): Promise<PlaylistDetail> {
+  const result = await api<{ playlist?: Playlist }>(config, 'getPlaylist', { id })
+  if (!result.playlist) throw new Error('Playlist not found.')
+  return { ...result.playlist, entries: result.playlist.entry ?? [] }
+}
+
+export const createPlaylist = (config: ServerConfig, name: string) =>
+  api(config, 'createPlaylist', { name })
+
+export const updatePlaylist = (
+  config: ServerConfig,
+  playlistId: string,
+  change: { name?: string; songIdToAdd?: string; songIdToRemove?: number },
+) => api(config, 'updatePlaylist', { playlistId, ...change })
+
+export const deletePlaylist = (config: ServerConfig, playlistId: string) =>
+  api(config, 'deletePlaylist', { playlistId })
+
+export async function getStarred(config: ServerConfig) {
+  const result = await api<{ starred2?: { song?: Track[] } }>(config, 'getStarred2')
+  return result.starred2?.song ?? []
+}
+
+export const star = (config: ServerConfig, id: string) => api(config, 'star', { id })
+export const unstar = (config: ServerConfig, id: string) => api(config, 'unstar', { id })
+
+export const scrobble = (config: ServerConfig, id: string) =>
+  api(config, 'scrobble', { id, submission: 'false' })
 
 export const streamUrl = (config: ServerConfig, id: string) =>
   endpoint(config, 'stream', { id, format: 'mp3' })

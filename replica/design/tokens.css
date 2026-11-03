@@ -1,8 +1,7 @@
 /* Spoookify tokens — the only file allowed to hold a raw colour value.
    Generated from replica/design/tokens.json. Tailwind v4 reads @theme, so no
-   tailwind.config.js exists. Components use bg-surface / text-muted, never hex. */
-
-@import "tailwindcss";
+   tailwind.config.js exists. Components use bg-surface / text-muted, never hex.
+   Imported by src/styles.css, which owns the single @import "tailwindcss". */
 
 @theme {
   /* colours — roles, not shades */

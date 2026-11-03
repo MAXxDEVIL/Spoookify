@@ -1,17 +1,17 @@
 feature,area,priority,original,clone,notes
-Browse albums artists and playlists,library,must,yes,no,
-Play pause next previous,playback,must,yes,no,
-Seek within a track,playback,must,yes,no,
-Volume control and mute,playback,must,yes,no,
+Browse albums artists and playlists,library,must,yes,partial,"album pages work from search; library, artist and playlist screens are step 5"
+Play pause next previous,playback,must,yes,yes,
+Seek within a track,playback,must,yes,yes,hidden under 640px until the full-screen player exists
+Volume control and mute,playback,must,yes,partial,volume slider and mute on the bar; hidden under 640px
 Queue panel with add remove clear,playback,must,yes,no,
-Search tracks albums artists,search,must,yes,no,
+Search tracks albums artists,search,must,yes,partial,artists are non-interactive chips until S04 exists
 Like and unlike a track,library,must,yes,no,
 Create rename delete playlist and add tracks,playlists,must,yes,no,
-Shuffle and repeat modes,playback,must,yes,no,
-Connect to a server with URL and credentials,onboarding,must,yes,no,
-Persistent now playing bar on every screen,layout,must,yes,no,
-Responsive layout down to phone width,layout,must,yes,no,
-Empty loading and error state on every list,ux,must,yes,no,
+Shuffle and repeat modes,playback,must,yes,yes,
+Connect to a server with URL and credentials,onboarding,must,yes,yes,
+Persistent now playing bar on every screen,layout,must,yes,yes,
+Responsive layout down to phone width,layout,must,yes,partial,mobile bar checked in markup only; no browser in this session
+Empty loading and error state on every list,ux,must,yes,partial,search and album only; other lists not built yet
 Skip limit and forced shuffle,playback,skip,no,no,"a Spotify restriction, not a feature we want"
 Track context menu play next add to queue,playback,should,yes,no,
 Drag to reorder the queue,playback,should,yes,no,

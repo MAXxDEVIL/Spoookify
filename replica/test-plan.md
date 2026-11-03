@@ -23,6 +23,7 @@ Run with `npm run e2e`. No Navidrome is available here, so the app is driven ove
 | F06-H1 | browse library | happy | albums grid, Load more, switch to artists, open artist | paging loads the rest and hides Load more, artist page shows albums, no axe violations | e2e | pass |
 | F06-E1 | | edge: empty library | reset fixtures empty, open Library | "No albums in your library yet." | e2e | pass |
 | F06-E2 | | edge: phone width | 390x844, open Library | navigation visible, no horizontal scroll | e2e | pass |
+| F06-E3 | | edge: phone width | 390x844, visit every main route, press Mute | no horizontal scroll anywhere, button flips to Unmute | e2e | pass |
 
 ## Not automated (accepted gaps)
 

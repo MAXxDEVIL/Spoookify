@@ -89,7 +89,7 @@ export default function PlayerBar() {
           </div>
         </div>
 
-        <div className="hidden w-[min(100%,150px)] items-center gap-2 sm:flex">
+        <div className="flex items-center gap-2 sm:w-[min(100%,150px)]">
           <IconButton
             label={state.volume === 0 ? 'Unmute' : 'Mute'}
             onClick={() => setVolume(state.volume === 0 ? 0.8 : 0)}
@@ -104,7 +104,7 @@ export default function PlayerBar() {
             value={state.volume}
             onChange={(event) => setVolume(Number(event.target.value))}
             aria-label="Volume"
-            className="h-1 flex-1 accent-accent"
+            className="h-1 flex-1 accent-accent max-sm:hidden"
           />
         </div>
 

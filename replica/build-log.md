@@ -67,3 +67,20 @@ footer transport and page actions, bare text matching both title and album cells
 resume test that seeded storage before the app's `pagehide` save overwrote it.
 
 Fixture WAVs are 2 s while tracks declare 120-300 s, so seek assertions are clamped.
+
+## Step 8 — parity (replica-diff)
+
+`parity.py` first printed 51.2 because out-of-scope rows used `priority=skip`; the tool expects
+`clone=skip` and a real must/should/could priority. Fixed the matrix, then the honest score is
+**66.7 with 13 of 13 must-haves done** (29 counted features; skipped ones are listed, not scored).
+
+Two must-haves moved to done while measuring, not by relabelling:
+
+- volume: the mute button was hidden under 640px with the whole volume group. It now stays in the
+  phone bar (slider remains desktop-only); F06-E3 checks it.
+- responsive: one phone-width test became every main route at 390px plus the mute toggle.
+
+No layout score: recon kept links and structural notes, not screenshots, so there is nothing fair
+to diff against. `replica/parity.md` compares structure and behaviour instead, with click counts
+per flow. Verdict: all must-haves done, no open S1/S2, feature score below the 80 bar →
+**not shippable yet**; top five gaps listed there.

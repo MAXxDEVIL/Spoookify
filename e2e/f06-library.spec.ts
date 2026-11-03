@@ -47,3 +47,23 @@ test.describe('F06 browse the library', () => {
     await expectClean(problems)
   })
 })
+
+test.describe('F06 phone width', () => {
+  test.beforeEach(async ({ page }) => {
+    await connect(page)
+    await page.setViewportSize({ width: 390, height: 844 })
+  })
+
+  test('F06-E3 every screen fits and mute stays reachable', async ({ page }) => {
+    const routes = ['/', '/search', '/library', '/library?tab=artists', '/library?tab=playlists', '/liked', '/album/al1', '/artist/ar1', '/playlist/pl1', '/settings']
+    for (const route of routes) {
+      await page.goto(route)
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
+      expect(overflow, route).toBeLessThanOrEqual(1)
+    }
+
+    const mute = page.locator('footer').getByRole('button', { name: 'Mute' })
+    await mute.click()
+    await expect(page.locator('footer').getByRole('button', { name: 'Unmute' })).toBeVisible()
+  })
+})

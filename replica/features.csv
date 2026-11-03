@@ -2,7 +2,7 @@ feature,area,priority,original,clone,notes
 Browse albums artists and playlists,library,must,yes,yes,
 Play pause next previous,playback,must,yes,yes,
 Seek within a track,playback,must,yes,yes,hidden under 640px until the full-screen player exists
-Volume control and mute,playback,must,yes,partial,volume slider and mute on the bar; hidden under 640px
+Volume control and mute,playback,must,yes,yes,mute on every width; slider desktop-only; phones use hardware volume
 Queue panel with add remove clear,playback,must,yes,yes,
 Search tracks albums artists,search,must,yes,yes,
 Like and unlike a track,library,must,yes,yes,
@@ -10,9 +10,9 @@ Create rename delete playlist and add tracks,playlists,must,yes,yes,
 Shuffle and repeat modes,playback,must,yes,yes,
 Connect to a server with URL and credentials,onboarding,must,yes,yes,
 Persistent now playing bar on every screen,layout,must,yes,yes,
-Responsive layout down to phone width,layout,must,yes,partial,mobile bar checked in markup only; no browser in this session
+Responsive layout down to phone width,layout,must,yes,yes,every main screen checked at 390px by F06-E3
 Empty loading and error state on every list,ux,must,yes,yes,
-Skip limit and forced shuffle,playback,skip,no,no,"a Spotify restriction, not a feature we want"
+Skip limit and forced shuffle,playback,could,no,skip,"a Spotify restriction, not a feature we want"
 Track context menu play next add to queue,playback,should,yes,partial,add to queue is a row icon; no play next and no right-click menu
 Drag to reorder the queue,playback,should,yes,no,
 Drag to reorder playlist tracks,playlists,should,yes,no,
@@ -29,17 +29,17 @@ Sleep timer,extras,could,yes,no,
 Light dark and auto theme,ux,could,yes,no,
 Full screen now playing on mobile,layout,could,yes,no,
 Offline cache of artwork and metadata,platform,could,yes,no,
-Stream the licensed catalogue,catalogue,skip,yes,no,licensed content is not ours to serve
-Podcasts and audiobooks,content,skip,yes,no,licensed content
-Personalised recommendations and Discover Weekly,discovery,skip,yes,no,needs listening data at a scale a self hosted library cannot reach
-AI DJ and daylist,discovery,skip,yes,no,same as recommendations
-Social follow shared and collaborative playlists,social,skip,yes,no,needs the network; single user model
-Jam listening sessions with friends,social,skip,yes,no,realtime multi user
-Ads,monetisation,skip,yes,no,we are free by construction
-Subscriptions and billing,monetisation,skip,yes,no,no money changes hands
-Offline downloads,platform,skip,yes,no,premium gate; optional later
-Lossless audio,playback,skip,yes,no,premium gate; depends on source files
-Cast and multi device Connect,platform,skip,yes,no,platform integrations not UX
-Spotify Wrapped and yearly stats,extras,skip,yes,no,marketing feature
-Concert and event listings,extras,skip,yes,no,partner data
-Spotify account import,onboarding,skip,yes,no,needs their API and auth; not worth the terms risk
+Stream the licensed catalogue,catalogue,must,yes,skip,licensed content is not ours to serve
+Podcasts and audiobooks,content,should,yes,skip,licensed content
+Personalised recommendations and Discover Weekly,discovery,must,yes,skip,needs listening data at a scale a self hosted library cannot reach
+AI DJ and daylist,discovery,could,yes,skip,same as recommendations
+Social follow shared and collaborative playlists,social,should,yes,skip,needs the network; single user model
+Jam listening sessions with friends,social,could,yes,skip,realtime multi user
+Ads,monetisation,must,yes,skip,we are free by construction
+Subscriptions and billing,monetisation,must,yes,skip,no money changes hands
+Offline downloads,platform,must,yes,skip,premium gate; optional later
+Lossless audio,playback,should,yes,skip,premium gate; depends on source files
+Cast and multi device Connect,platform,should,yes,skip,platform integrations not UX
+Spotify Wrapped and yearly stats,extras,could,yes,skip,marketing feature
+Concert and event listings,extras,could,yes,skip,partner data
+Spotify account import,onboarding,could,yes,skip,needs their API and auth; not worth the terms risk
